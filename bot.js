@@ -23,7 +23,7 @@ client.on('ready', () => {
     client.user.setStatus("Online")
 });
   client.on('ready', () => {
-     client.user.setActivity("MaX Music",{type: 'LISTENING'});
+     client.user.setActivity("Music",{type: 'LISTENING'});
 
 });
   
@@ -273,6 +273,24 @@ if (message.content === '#support') {
 
     }
   });
-   
+   client.on('message', message => {
+    if (message.content === '#help') {
+        let helpEmbed = new Discord.RichEmbed()
+        .setTitle('**By : Randy **')
+        .setDescription('**برفكس البوت (#)**')
+        .addField('play', 'لتشغيل الاغنيه 
+        .addField('skip', 'تخطي الأغنية')
+        .addField('pause', 'ايقاف الاغنية مؤقتا')
+        .addField('resume', 'تكملة الاغنية')
+        .addField('queue', 'اظهار قائمة التشغيل')
+        .addField('vol', 'زيادة او نقصان الصوت ')
+        .addField('np', 'اظهار الاغنية اللي انت مشغلها حاليا ')          
+
+    	
+       
+      message.channel.send(helpEmbed);
+    }
+});
+
    
 client.login(process.env.BOT_TOKEN);

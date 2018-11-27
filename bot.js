@@ -278,7 +278,7 @@ if (message.content === '#support') {
         let helpEmbed = new Discord.RichEmbed()
         .setTitle('**By : Randy **')
         .setDescription('**برفكس البوت (#)**')
-        .addField('play', 'لتشغيل الاغنيه 
+        .addField('play', 'لتشغيل الاغنيه ')
         .addField('skip', 'تخطي الأغنية')
         .addField('pause', 'ايقاف الاغنية مؤقتا')
         .addField('resume', 'تكملة الاغنية')

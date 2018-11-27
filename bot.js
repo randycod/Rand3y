@@ -27,32 +27,26 @@ client.on('ready', () => {
 
 });
   
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-const prefix = "1"
+const prefix = "#"
 client.on('message', async msg => { // eslint-disable-line
 	if (msg.author.bot) return undefined;
-	//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 	if (!msg.content.startsWith(prefix)) return undefined;
 	const args = msg.content.split(' ');
 	const searchString = args.slice(1).join(' ');
-	//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 	const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
 	const serverQueue = queue.get(msg.guild.id);
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 	let command = msg.content.toLowerCase().split(" ")[0];
 	command = command.slice(prefix.length)
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 	if (command === `play`) {
 		const voiceChannel = msg.member.voiceChannel;
 		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
 		if (!permissions.has('CONNECT')) {
-			//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+		}
 		if (!permissions.has('SPEAK')) {
 			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+		}
 
 		if (!permissions.has('EMBED_LINKS')) {
 			return msg.channel.sendMessage("**يجب توآفر برمشن `EMBED LINKS`لدي **")
@@ -61,34 +55,33 @@ client.on('message', async msg => { // eslint-disable-line
 		if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
 			const playlist = await youtube.getPlaylist(url);
 			const videos = await playlist.getVideos();
-			//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 			for (const video of Object.values(videos)) {
-				const video2 = await youtube.getVideoByID(video.id); // eslint-disable-line no-await-in-loop
-				await handleVideo(video2, msg, voiceChannel, true); // eslint-disable-line no-await-in-loop
-			}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+				const video2 = await youtube.getVideoByID(video.id); 
+				await handleVideo(video2, msg, voiceChannel, true); 
+			}
 			return msg.channel.send(` **${playlist.title}** تم الإضآفة إلى قأئمة التشغيل`);
 		} else {
-			try {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+			try {
 
 				var video = await youtube.getVideo(url);
 			} catch (error) {
-				try {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+				try {
 					var videos = await youtube.searchVideos(searchString, 5);
 					let index = 0;
 					const embed1 = new Discord.RichEmbed()
 			        .setDescription(`**الرجآء من حضرتك إختيآر رقم المقطع** :
 ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+
 					.setFooter("MaX Music")
 					msg.channel.sendEmbed(embed1).then(message =>{message.delete(20000)})
 					
-					// eslint-disable-next-line max-depth
+				
 					try {
 						var response = await msg.channel.awaitMessages(msg2 => msg2.content > 0 && msg2.content < 11, {
 							maxMatches: 1,
 							time: 15000,
 							errors: ['time']
-						});//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+						});
 					} catch (err) {
 						console.error(err);
 						return msg.channel.send('لم يتم إختيآر مقطع صوتي');
@@ -99,10 +92,10 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 					console.error(err);
 					return msg.channel.send(':X: لا يتوفر نتآئج بحث ');
 				}
-			}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+			}
 
 			return handleVideo(video, msg, voiceChannel);
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+		}
 	} else if (command === `skip`) {
 		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
 		if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لتجآوزه');
@@ -224,7 +217,7 @@ client.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
-  if (message.author.id !== "407966658469167104") return;
+  if (message.author.id !== "399353508429824000") return;
 
   
   if (message.content.startsWith(prefix + 'setwat')) {
@@ -268,16 +261,15 @@ if (message.content.startsWith(prefix + 'setplay')) {
 });
 client.on('message', message => {
   if (true) {
-if (message.content === '1invite') {
+if (message.content === '#invite') {
       message.author.send(`**بامكانك دعوة البوت الى سيرفرك عن طريق الرابط
- https://discordapp.com/oauth2/authorize?client_id=464933746991431680&permissions=2080374975&scope=bot
-  أو عن طريق موقع البوت: 
- http://platbot.ga/**`).catch(e => console.log(e.stack));
+https://discordapp.com/oauth2/authorize?client_id=517058092110839808&scope=bot&permissions=36760572
+ **`).catch(e => console.log(e.stack));
 
     }
    } 
-if (message.content === '1support') {
-      message.author.send('**سيرفر المساعده :\n https://discord.gg/227PT7A**').catch(e => console.log(e.stack));
+if (message.content === '#support') {
+      message.author.send('**سيرفر المساعده :https://discord.gg/JNb3dAy**').catch(e => console.log(e.stack));
 
     }
   });
